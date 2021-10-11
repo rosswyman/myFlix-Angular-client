@@ -1,3 +1,4 @@
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
@@ -9,16 +10,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 
-
+import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserRegistrationFormComponent,
+    UserLoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,6 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatCard,
     MatCardModule,
     MatFormFieldModule,
     MatDialogModule,
