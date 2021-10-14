@@ -10,18 +10,22 @@ import { FetchDataApiService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss']
 })
+
 export class UserLoginFormComponent implements OnInit {
 
   @Input() userData = { Username: '', Password: ''};
 
 constructor(
     public fetchApiData: FetchDataApiService,
+    public router: Router,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar) { }
 
@@ -37,6 +41,7 @@ loginUser(): void {
      this.snackBar.open(result, 'OK', {
         duration: 2000
      });
+     this.router.navigate(['movies']);
     }, (result) => {
       this.snackBar.open(result, 'OK', {
         duration: 2000
