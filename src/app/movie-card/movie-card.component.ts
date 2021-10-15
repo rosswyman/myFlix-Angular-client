@@ -21,8 +21,12 @@ export class MovieCardComponent {
   constructor(
     public fetchApiData: FetchDataApiService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar,
+    private _snackBar: MatSnackBar,
     ) { }
+
+    openSnackBar(message: string, action: string) {
+      this._snackBar.open(message, action);
+    }
 
   ngOnInit(): void {
     this.getMovies();
@@ -56,14 +60,15 @@ export class MovieCardComponent {
       width: '500px'
     });
   }
+  
 
   toggleFavorite(movieID:string,title:string): void {
     console.log('toggled favorite');
     console.log(movieID);
+    this.openSnackBar(`"${title}" has been added to your favorites.`, 'OK')
         this.fetchApiData.addToFavorites(movieID).subscribe((resp: any) => {     
-          this.snackBar.open(`${title} has been added to your favorites.`, 'OK', {
-            duration: 3000,
-          })
+          console.log(resp);
+          // this.openSnackBar('This is a snackbar','Ok')
           setTimeout(function() {
             window.location.reload()}, 3000);
         });

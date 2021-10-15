@@ -19,6 +19,10 @@ export class NavbarComponent implements OnInit {
     public router: Router,
     ) { }
 
+    openSnackBar(message: string, action: string) {
+      this.snackBar.open(message, action);
+    }
+
   ngOnInit(): void {
   }
 
@@ -33,7 +37,8 @@ export class NavbarComponent implements OnInit {
   }
 
   openFavorites(): void {
-    this.router.navigate(['favorites'])
+    // this.router.navigate(['favorites'])
+    this.openSnackBar('This is a snackbar','Ok')
   }
 
    logOut(): void {
