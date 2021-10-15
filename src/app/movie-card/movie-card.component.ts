@@ -6,6 +6,7 @@ import { DirectorViewComponent } from '../director-view/director-view.component'
 import { MatDialog } from '@angular/material/dialog';
 import { StringMapWithRename } from '@angular/compiler/src/compiler_facade_interface';
 import { SynopsisViewComponent } from '../synopsis-view/synopsis-view.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -16,9 +17,11 @@ import { SynopsisViewComponent } from '../synopsis-view/synopsis-view.component'
 })
 export class MovieCardComponent {
   movies: any[] = [];
+  user: any = {};
   constructor(
     public fetchApiData: FetchDataApiService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar,
     ) { }
 
   ngOnInit(): void {
@@ -53,6 +56,21 @@ export class MovieCardComponent {
       width: '500px'
     });
   }
+
+  toggleFavorite(movieID:string,title:string): void {
+    console.log('toggled favorite');
+    console.log(movieID);
+        this.fetchApiData.addToFavorites(movieID).subscribe((resp: any) => {     
+          this.snackBar.open(`${title} has been added to your favorites.`, 'OK', {
+            duration: 3000,
+          })
+          setTimeout(function() {
+            window.location.reload()}, 3000);
+        });
+
+    
+  }
+    
 
   
 }

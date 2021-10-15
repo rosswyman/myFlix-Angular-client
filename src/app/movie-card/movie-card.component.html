@@ -35,11 +35,22 @@
               (click)='getSynopsis(movie.Title, movie.Description, movie.ImagePath)'
           >
               Synopsis
-          </button>          
-          <!-- <mat-button-toggle mat-fab disabled aria-label="Example icon button with a heart icon">
-            <mat-icon>favorite</mat-icon>
+          </button>
+          
+          <mat-button-toggle-group name="favrorite" aria-label="Ingredients" multiple>
+            <mat-button-toggle value="favorite"
+            (click)='toggleFavorite(movie._id, movie.Title)'>
+            <mat-icon>favorite</mat-icon></mat-button-toggle>            
+          </mat-button-toggle-group>
+
+          <!-- <mat-button-toggle 
+          mat-fab disabled aria-label="Example icon button with a heart icon"
+          (click)='toggleFavorite()'>
+            
+            Favorite
           </mat-button-toggle> -->
-          <mat-icon>favorite_border</mat-icon>
+
+          <!--***original*** <mat-icon>favorite_border</mat-icon> -->
       </mat-card-actions>
   </mat-card>
  
