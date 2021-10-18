@@ -1,10 +1,7 @@
-// Core modules
 import { Component, OnInit, Input } from '@angular/core';
 
-// components
 import { FetchDataApiService } from '../fetch-api-data.service';
 
-// Material modules
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
