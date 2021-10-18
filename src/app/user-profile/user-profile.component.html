@@ -8,8 +8,12 @@
     <p>Username: {{user.Username}}</p>  
     <p>Email: {{user.Email}}</p>
     <p>Birthday: {{user.Birthday}}</p>
-    <p>Favorites: {{user.FavoriteMovies}}</p>
-    <button>Update Profile Information</button>      
+    <!-- <p>Favorites: {{user.FavoriteMovies}}</p> -->
+    <button
+    mat-raised-button
+    color="primary"
+    (click)='editUser()'
+    >Update Profile Information</button>      
   </mat-card-content>
   <mat-card-actions>
   </mat-card-actions>

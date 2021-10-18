@@ -135,7 +135,7 @@ export class FetchDataApiService {
   // Edit user
   editUser(userData:any): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const username = localStorage.getItem('username');
     return this.http.put(apiUrl + `users/${username}`, userData, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
@@ -171,6 +171,7 @@ export class FetchDataApiService {
     console.error(
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`);
+    
     }
     return throwError(
     'Something bad happened; please try again later.');

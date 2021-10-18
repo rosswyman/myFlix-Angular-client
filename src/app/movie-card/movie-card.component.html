@@ -1,13 +1,6 @@
-<!-- src/app/movie-card/movie-card.component.html -->
-<!-- <mat-card *ngFor="let movie of movies; let i=index;">
-  <mat-dialog-content>
-      <mat-card-title>{{movie.Title}}</mat-card-title>
-      <mat-card-subtitle><img src={{movie.ImagePath}}/></mat-card-subtitle>
-  </mat-dialog-content>
-</mat-card> -->
 <app-navbar></app-navbar>
 <div style="display: flex;" class="content">
-  <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+  <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;" class="movie-card">
       <mat-card-header>
       <mat-card-title>{{movie.Title}}</mat-card-title>
           <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
@@ -37,11 +30,8 @@
               Synopsis
           </button>
           
-          <mat-button-toggle-group name="favrorite" aria-label="Ingredients" multiple>
-            <mat-button-toggle value="favorite"
-            (click)='toggleFavorite(movie._id, movie.Title)'>
-            <mat-icon>favorite_border</mat-icon></mat-button-toggle>            
-          </mat-button-toggle-group>
+          <mat-icon *ngIf="!isFavorite(movie._id)" (click)="addToFavorites(movie._id, movie.Title)" class="favorite-button">favorite_border</mat-icon>
+          <mat-icon *ngIf="isFavorite(movie._id)" (click)="deleteFromFavorites(movie._id, movie.Title)" class="favorite-button-active">favorite</mat-icon>
 
           
       </mat-card-actions>

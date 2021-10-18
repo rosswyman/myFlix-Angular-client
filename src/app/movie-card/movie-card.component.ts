@@ -17,6 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent {
   movies: any[] = [];
+  favoriteMovies: any[] = [];
   user: any = {};
   constructor(
     public fetchApiData: FetchDataApiService,
@@ -30,12 +31,15 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavorites();
+    
+    
   }
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
         this.movies = resp;
-        console.log(this.movies);
+        
         return this.movies;
       });
     }
@@ -54,6 +58,24 @@ export class MovieCardComponent {
     });
   }
 
+  getFavorites(): void{
+    const username = localStorage.getItem('username');
+   
+    this.fetchApiData.getUser(username).subscribe((resp: any) => {
+      
+      this.favoriteMovies=resp.FavoriteMovies;
+      
+    })
+  }
+
+  isFavorite(movieID: string): any{
+    if (this.favoriteMovies.includes(movieID)){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   getSynopsis(title:string,description:string,imagePath:string): void {
     this.dialog.open(SynopsisViewComponent, {
       data: {title, description, imagePath},
@@ -62,18 +84,28 @@ export class MovieCardComponent {
   }
   
 
-  toggleFavorite(movieID:string,title:string): void {
-    console.log('toggled favorite');
+  addToFavorites(movieID:string,title:string): void {
+    console.log('addToFavorites called');
     console.log(movieID);
     this.openSnackBar(`"${title}" has been added to your favorites.`, 'OK')
         this.fetchApiData.addToFavorites(movieID).subscribe((resp: any) => {     
           console.log(resp);
-          // this.openSnackBar('This is a snackbar','Ok')
           setTimeout(function() {
             window.location.reload()}, 3000);
         });
+        return this.getFavorites();    
+  }
 
+  deleteFromFavorites(movieID:string,title:string): void {
+    console.log('deleteFromFavorites called');
     
+    this.openSnackBar(`"${title}" has been removed from your favorites.`, 'OK')
+        this.fetchApiData.deleteFromFavorites(movieID).subscribe((resp: any) => {     
+          console.log(resp);
+          setTimeout(function() {
+            window.location.reload()}, 3000);
+        });
+        return this.getFavorites();      
   }
     
 

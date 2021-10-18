@@ -34,4 +34,9 @@ getUser(): void {
       this.user = resp;
     });
   }
+
+editUser(): void {
+  this.router.navigate(['editUser']);
+  this.dialog.closeAll();
+}
 }

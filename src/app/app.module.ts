@@ -30,11 +30,13 @@ import { GenreViewComponent } from './genre-view/genre-view.component';
 import { DirectorViewComponent } from './director-view/director-view.component';
 import { SynopsisViewComponent } from './synopsis-view/synopsis-view.component';
 import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
   { path: 'user', component: UserProfileComponent },
+  { path: 'editUser', component: EditUserComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     GenreViewComponent,
     DirectorViewComponent,
     SynopsisViewComponent,
-    UserFavoritesComponent
+    UserFavoritesComponent,
+    EditUserComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

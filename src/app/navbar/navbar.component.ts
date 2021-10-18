@@ -36,12 +36,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['movies']);
   }
 
-  openFavorites(): void {
-    // this.router.navigate(['favorites'])
-    this.openSnackBar('This is a snackbar','Ok')
-  }
-
-   logOut(): void {
+  logOut(): void {
     this.router.navigate(['welcome']);
    
   }
