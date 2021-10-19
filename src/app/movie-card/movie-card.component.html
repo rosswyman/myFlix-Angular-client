@@ -1,40 +1,50 @@
-<app-navbar></app-navbar>
-<div style="display: flex;" class="content">
-  <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;" class="movie-card">
-      <mat-card-header>
-      <mat-card-title>{{movie.Title}}</mat-card-title>
-          <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
-      </mat-card-header>
-      <img src={{movie.ImagePath}} alt= {{movie.Title}} height=400px/>
-      <mat-card-actions>
-          <button
-              mat-button
-              color="primary"
-              (click)='getGenre(movie.Genre.Name, movie.Genre.Description)'
-          >
-              Genre
-          </button>
-          <button
-              mat-button
-              color="primary"
-              (click)='getDirector(movie.Director.Name, movie.Director.Birth, movie.Director.Death, movie.Director.Bio)'
-              
-          >
-              Director
-          </button>
-          <button
-              mat-button
-              color="primary"
-              (click)='getSynopsis(movie.Title, movie.Description, movie.ImagePath)'
-          >
-              Synopsis
-          </button>
-          
-          <mat-icon *ngIf="!isFavorite(movie._id)" (click)="addToFavorites(movie._id, movie.Title)" class="favorite-button">favorite_border</mat-icon>
-          <mat-icon *ngIf="isFavorite(movie._id)" (click)="deleteFromFavorites(movie._id, movie.Title)" class="favorite-button-active">favorite</mat-icon>
+<div style="position: sticky; top: 0">
+  <app-navbar></app-navbar></div>
 
-          
-      </mat-card-actions>
-  </mat-card>
- 
+
+<div fxLayout="row wrap" fxLayoutGap="10px grid">
+
+  <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let movie of movies;" style="display: flex;" class="content">
+  
+    <!-- <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;" class="movie-card">  <--This is the original -->
+    <mat-card class="movie-card">
+        <mat-card-header>
+          <mat-card-title>{{movie.Title}}</mat-card-title>
+          <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img src={{movie.ImagePath}} alt= {{movie.Title}} height=400px/>
+        <mat-card-actions>
+            <button
+                mat-button
+                color="primary"
+                (click)='getGenre(movie.Genre.Name, movie.Genre.Description)'
+            >
+                Genre
+            </button>
+            <button
+                mat-button
+                color="primary"
+                (click)='getDirector(movie.Director.Name, movie.Director.Birth, movie.Director.Death, movie.Director.Bio)'
+                
+            >
+                Director
+            </button>
+            <button
+                mat-button
+                color="primary"
+                (click)='getSynopsis(movie.Title, movie.Description, movie.ImagePath)'
+            >
+                Synopsis
+            </button>
+            
+            <mat-icon *ngIf="!isFavorite(movie._id)" (click)="addToFavorites(movie._id, movie.Title)" class="favorite-button">favorite_border</mat-icon>
+            <mat-icon *ngIf="isFavorite(movie._id)" (click)="deleteFromFavorites(movie._id, movie.Title)" class="favorite-button-active">favorite</mat-icon>
+  
+            
+        </mat-card-actions>
+    </mat-card>
+  
+  </div>
+
 </div>
+
