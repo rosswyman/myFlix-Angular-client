@@ -1,0 +1,17 @@
+.main-page{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-color: black;
+  border-radius: 25px;
+  padding: 50px;
+  text-align: center;
+}
+
+.welcome-screen-button{
+  margin: 5px;
+}
