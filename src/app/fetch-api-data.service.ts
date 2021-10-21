@@ -31,6 +31,11 @@ export class FetchDataApiService {
     );
   }
 
+   /**
+   * Get all movies method
+   * @returns an array of movies
+   */
+
   // Get all movies
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
