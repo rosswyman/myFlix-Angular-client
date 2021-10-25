@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Live Version
 
-Updated 10/25/2021: The live version of this app can be found at https://github.com/rosswyman/myFlix-Angular-client
+Updated 10/25/2021: The live version of this app can be found at https://rosswyman.github.io/myFlix-Angular-client/
 
 ## Development server
 
